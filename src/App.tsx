@@ -123,7 +123,7 @@ function App() {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % words.length;
       setCurrentWord(words[currentIndex]);
-    }, 5000); // 5 seconds
+    }, 1200); // 1.2 seconds
 
     return () => clearInterval(interval);
   }, []);
