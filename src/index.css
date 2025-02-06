@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  perspective: 1000px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Enhanced grid background */
+.grid-background {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: clamp(20px, 4vw, 50px) clamp(20px, 4vw, 50px);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform: translateZ(-50px);
+  opacity: 0.5;
+}
+
+.grid-background:hover {
+  animation: wave3D 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-grid-pattern {
+  background-size: clamp(10px, 2vw, 20px) clamp(10px, 2vw, 20px);
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  z-index: 0;
+}
+
+@keyframes wave3D {
+  0% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      translateZ(0);
+  }
+  25% {
+    transform: 
+      perspective(1000px) 
+      rotateX(5deg) 
+      rotateY(3deg) 
+      translateZ(30px);
+  }
+  50% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(-3deg) 
+      translateZ(60px);
+  }
+  75% {
+    transform: 
+      perspective(1000px) 
+      rotateX(-5deg) 
+      rotateY(3deg) 
+      translateZ(30px);
+  }
+  100% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      translateZ(0);
+  }
+}
+
+/* Word fade animation */
+.word-fade {
+  animation: fadeWord 5s infinite;
+}
+
+@keyframes fadeWord {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive card styles */
+.hover-lift {
+  transition: transform 0.3s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.stats-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift border-2 border-black;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.service-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover-lift border-2 border-black;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.values-pill {
+  @apply px-6 py-3 rounded-full text-white font-semibold shadow-lg;
+  animation: fadeIn 0.6s ease-out backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.testimonial-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border-2 border-black;
+  animation: fadeInScale 0.6s ease-out backwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive text adjustments */
+@media (max-width: 640px) {
+  .text-7xl {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+  }
+  
+  .text-5xl {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .text-4xl {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+  
+  .text-2xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+}
+
+/* Enhanced container padding for mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .values-pill {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .stats-card,
+  .service-card,
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}
