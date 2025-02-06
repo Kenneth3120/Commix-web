@@ -225,7 +225,7 @@ function App() {
           ></div>
           <div className="container mx-auto px-4 relative">
             {/* Lightbulb Icon Container */}
-            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 z-10">
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-10">
               <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-black shadow-lg">
                 <Lightbulb className="w-10 h-10 text-purple-600" />
               </div>
