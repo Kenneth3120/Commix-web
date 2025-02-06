@@ -208,3 +208,47 @@ body {
     padding: 1.5rem;
   }
 }
+
+/* Our Clients Section */
+#clients {
+  background-color: #ffffff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+#clients h2 {
+  color: #1f2937; /* text-gray-800 */
+}
+
+#clients .clients-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  #clients .clients-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  #clients .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#clients img {
+  display: block;
+  margin: 0 auto;
+  max-height: 4rem; /* Matches Tailwind's max-h-16 (4rem) */
+  object-fit: contain;
+}
+
+/* Override Tawk.to default positioning so it’s not fixed */
+#tawkchat-container,
+.tawk-chat {
+  position: absolute !important;
+  bottom: 20px !important; /* Adjust as needed */
+  right: 20px !important;  /* Adjust as needed */
+  z-index: 9999 !important;
+}

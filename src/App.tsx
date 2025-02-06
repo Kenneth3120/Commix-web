@@ -18,13 +18,13 @@ import {
   MapPin,
 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
+import TawkToWidget from './TawkToWidget';
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-// Navbar Component
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -123,9 +123,13 @@ function App() {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % words.length;
       setCurrentWord(words[currentIndex]);
-    }, 1200); // 1.2 seconds
-
+    }, 1200);
     return () => clearInterval(interval);
+  }, []);
+
+  // Inject Tawk.to widget and override its position (handled in TawkToWidget.tsx)
+  useEffect(() => {
+    // The TawkToWidget component handles script injection and positioning.
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -134,12 +138,9 @@ function App() {
 
     try {
       const { error } = await supabase.from('contact_submissions').insert([formData]);
-
       if (error) throw error;
-
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
-
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 3000);
@@ -156,8 +157,26 @@ function App() {
     }));
   };
 
+  const reviews = [
+    {
+      text: "With Commix, it didn't feel like work at all. They got our vibe and personalized the script perfectly—it felt more like a fun weekend with friends.",
+      author: "Ahmed Bashar",
+    },
+    {
+      text: "I knew Commix would deliver the best, and they totally lived up to my expectations. It was a new experience for me, but we had a great time collaborating with them!",
+      author: "NABHAN DAMUDI",
+    },
+    {
+      text: "Nice quality, nice branding. If the content game stays strong, it can explode. Keep up the good work",
+      author: "SHAUN RODRIGUES",
+    },
+  ];
+
   return (
     <div className="w-full min-h-screen relative">
+      {/* Inject Tawk.to widget */}
+      <TawkToWidget />
+
       {/* Grid Background with Yellow Background */}
       <div className="fixed inset-0 bg-yellow-400">
         <div className="absolute inset-0 grid-background"></div>
@@ -183,7 +202,6 @@ function App() {
                 <div className="text-5xl sm:text-7xl font-bold">CULTURE</div>
               </div>
             </div>
-
             {/* Right Side */}
             <div className="flex flex-col items-center md:items-end space-y-8">
               <div className="bg-orange-500/90 backdrop-blur-sm text-white rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
@@ -191,7 +209,6 @@ function App() {
                   <div className="word-fade">{currentWord}</div>
                 </div>
               </div>
-
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
                 <div className="text-3xl sm:text-7xl font-bold flex items-center justify-center tracking-wider">
                   <span className="mr-1">C</span>
@@ -230,14 +247,12 @@ function App() {
                 <Lightbulb className="w-10 h-10 text-purple-600" />
               </div>
             </div>
-
-            {/* Content with increased top padding */}
+            {/* Content */}
             <div className="pt-20">
               <h2 className="text-3xl sm:text-5xl font-bold text-center mb-6">Building Creative Community</h2>
               <p className="text-lg sm:text-2xl text-center max-w-3xl mx-auto mb-8">
                 We Build Stories and Create Experience through Branding.
               </p>
-
               {/* Values */}
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 {['Authenticity', 'Creativity', 'Culture', 'Impact', 'Evolve'].map((value, index) => (
@@ -250,7 +265,6 @@ function App() {
                   </span>
                 ))}
               </div>
-
               <div className="relative p-6 sm:p-8 bg-white/60 rounded-3xl shadow-lg mb-12 border-2 border-black">
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                   <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-black">
@@ -263,7 +277,6 @@ function App() {
                   you as the expert who truly understands them.
                 </p>
               </div>
-
               {/* Stats */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -285,6 +298,19 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Clients Section */}
+        {/* <section id="clients" className="py-16 sm:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">Our Clients</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+              <img src="/youace.jpeg" alt="Client 1" className="mx-auto max-h-16 object-contain" />
+              <img src="/T9.png" alt="Client 2" className="mx-auto max-h-16 object-contain" />
+              <img src="/client3.png" alt="Client 3" className="mx-auto max-h-16 object-contain" />
+              <img src="/client4.png" alt="Client 4" className="mx-auto max-h-16 object-contain" />
+            </div>
+          </div>
+        </section> */}
 
         {/* Services Section */}
         <section id="services" className="py-16 sm:py-24 bg-gradient-to-tr from-yellow-300/30 to-yellow-100/30 border-b-2 border-black">
@@ -361,7 +387,6 @@ function App() {
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full blur-3xl opacity-50 transform -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-yellow-400 rounded-full blur-3xl opacity-50 transform translate-x-1/2 translate-y-1/2"></div>
-            {/* Grid Pattern */}
             <div
               className="absolute inset-0"
               style={{
@@ -390,22 +415,17 @@ function App() {
         {/* Testimonials Section */}
         <section id="testimonials" className="py-16 sm:py-24 bg-gradient-to-b from-yellow-300/40 to-yellow-100/40">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">What they say about Commix</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {[1, 2, 3].map((_, index) => (
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">WHAT THEY SAY ABOUT COMMIX</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {reviews.map((review, index) => (
                 <div
                   key={index}
-                  className="testimonial-card group hover:bg-purple-600 hover:text-white transition-all border-2 border-black"
+                  className="testimonial-card bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border-2 border-black transform transition-all hover:scale-105 font-serif"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className="h-24 sm:h-32 bg-gradient-to-br from-yellow-300/50 to-purple-300/50 rounded-xl mb-4 group-hover:from-yellow-400 group-hover:to-purple-500"></div>
-                  <p className="text-sm sm:text-base text-gray-600 mb-4 group-hover:text-white">
-                    "How We Helped Our Clients with the Work We Delivered."
-                  </p>
-                  <div className="flex items-center gap-2 text-purple-600 group-hover:text-yellow-300">
-                    <ChevronRight size={20} />
-                    <span className="font-semibold">Read More</span>
-                  </div>
+                  <div className="text-4xl text-gray-300 mb-2">“</div>
+                  <p className="text-lg text-gray-800 mb-4 leading-relaxed">{review.text}</p>
+                  <p className="font-bold text-gray-900 text-right">- {review.author}</p>
                 </div>
               ))}
             </div>
@@ -442,7 +462,6 @@ function App() {
                     placeholder="Your name"
                   />
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email
@@ -458,7 +477,6 @@ function App() {
                     placeholder="your@email.com"
                   />
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Message
@@ -474,7 +492,6 @@ function App() {
                     placeholder="Your message..."
                   />
                 </div>
-
                 <button
                   type="submit"
                   disabled={submitStatus === 'loading'}
@@ -484,13 +501,11 @@ function App() {
                 >
                   {submitStatus === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
-
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-100 text-green-700 rounded-lg border-2 border-green-200">
                     Message sent successfully! We'll get back to you soon.
                   </div>
                 )}
-
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 text-red-700 rounded-lg border-2 border-red-200">
                     There was an error sending your message. Please try again.
@@ -504,7 +519,6 @@ function App() {
         {/* Footer */}
         <footer className="bg-purple-600 text-white border-t-2 border-black">
           <div className="container mx-auto">
-            {/* Top Footer */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 p-8 border-b-2 border-white/20">
               {/* Brand Section */}
               <div className="space-y-4 text-center md:text-left">
@@ -518,26 +532,24 @@ function App() {
                   Creating impactful brand experiences that resonate and inspire.
                 </p>
               </div>
-
               {/* Contact Info */}
               <div className="space-y-4 text-center md:text-left">
                 <h3 className="text-xl font-bold">Contact</h3>
                 <div className="space-y-2">
                   <div className="flex items-center justify-center md:justify-start gap-2">
                     <Mail size={18} />
-                    <span>hello@commix.com</span>
+                    <span>hello@thecommix.com</span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-2">
                     <Phone size={18} />
-                    <span>+1 (555) 123-4567</span>
+                    <span>+971 52 424 4160</span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-2">
                     <MapPin size={18} />
-                    <span>Los Angeles, CA</span>
+                    <span>Dubai, UAE</span>
                   </div>
                 </div>
               </div>
-
               {/* Quick Links */}
               <div className="space-y-4 text-center md:text-left">
                 <h3 className="text-xl font-bold">Quick Links</h3>
@@ -564,7 +576,6 @@ function App() {
                   </li>
                 </ul>
               </div>
-
               {/* Newsletter */}
               <div className="space-y-4 text-center md:text-left">
                 <h3 className="text-xl font-bold">Newsletter</h3>
@@ -583,8 +594,6 @@ function App() {
                 </div>
               </div>
             </div>
-
-            {/* Bottom Footer */}
             <div className="p-6 text-center text-white/80">
               <p>&copy; {new Date().getFullYear()} Commix. All rights reserved.</p>
             </div>
