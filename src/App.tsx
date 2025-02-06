@@ -30,32 +30,31 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-purple-600 fixed w-full z-20 top-0 left-0 border-b-2 border-black">
+    <nav className="bg-black fixed w-full z-20 top-0 left-0 border-b-2 border-black">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="text-2xl font-bold flex items-center">
-              <span>COMMIX</span>
-              <div className="ml-2 bg-yellow-400 rounded-full w-8 h-8 flex items-center justify-center">
-                <Play className="text-purple-600 ml-1" fill="currentColor" size={16} />
-              </div>
-            </div>
+            <img
+              src="/commix-logo2bg.png" // Ensure this path is correct (e.g., in the public folder)
+              alt="Commix Logo"
+              className="px-0 h-20"
+            />
           </div>
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
             <a href="#hero" className="text-white hover:text-yellow-400 transition-colors">
               Home
             </a>
-            <a href="#mission" className="text-white hover:text-yellow-400 transition-colors">
+            {/* <a href="#mission" className="text-white hover:text-yellow-400 transition-colors">
               Mission
-            </a>
+            </a> */}
             <a href="#services" className="text-white hover:text-yellow-400 transition-colors">
               Services
             </a>
-            <a href="#whyus" className="text-white hover:text-yellow-400 transition-colors">
+            {/* <a href="#whyus" className="text-white hover:text-yellow-400 transition-colors">
               Why Us
-            </a>
+            </a> */}
             <a href="#testimonials" className="text-white hover:text-yellow-400 transition-colors">
               Testimonials
             </a>
@@ -86,15 +85,15 @@ const Navbar = () => {
             <a href="#hero" className="block text-white hover:text-yellow-400 transition-colors">
               Home
             </a>
-            <a href="#mission" className="block text-white hover:text-yellow-400 transition-colors">
+            {/* <a href="#mission" className="block text-white hover:text-yellow-400 transition-colors">
               Mission
-            </a>
+            </a> */}
             <a href="#services" className="block text-white hover:text-yellow-400 transition-colors">
               Services
             </a>
-            <a href="#whyus" className="block text-white hover:text-yellow-400 transition-colors">
+            {/* <a href="#whyus" className="block text-white hover:text-yellow-400 transition-colors">
               Why Us
-            </a>
+            </a> */}
             <a href="#testimonials" className="block text-white hover:text-yellow-400 transition-colors">
               Testimonials
             </a>
@@ -127,9 +126,9 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Inject Tawk.to widget and override its position (handled in TawkToWidget.tsx)
+  // Inject Tawk.to widget (handled in TawkToWidget.tsx)
   useEffect(() => {
-    // The TawkToWidget component handles script injection and positioning.
+    // TawkToWidget component handles script injection and positioning.
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -157,6 +156,21 @@ function App() {
     }));
   };
 
+  // const reviews = [
+  //   {
+  //     text: "With Commix, it didn't feel like work at all. They got our vibe and personalized the script perfectly—it felt more like a fun weekend with friends.",
+  //     author: "Ahmed Bashar",
+  //   },
+  //   {
+  //     text: "I knew Commix would deliver the best, and they totally lived up to my expectations. It was a new experience for me, but we had a great time collaborating with them!",
+  //     author: "NABHAN DAMUDI",
+  //   },
+  //   {
+  //     text: "Nice quality, nice branding. If the content game stays strong, it can explode. Keep up the good work",
+  //     author: "SHAUN RODRIGUES",
+  //   },
+  // ];
+
   const reviews = [
     {
       text: "With Commix, it didn't feel like work at all. They got our vibe and personalized the script perfectly—it felt more like a fun weekend with friends.",
@@ -164,11 +178,11 @@ function App() {
     },
     {
       text: "I knew Commix would deliver the best, and they totally lived up to my expectations. It was a new experience for me, but we had a great time collaborating with them!",
-      author: "NABHAN DAMUDI",
+      author: "Nabhan Damudi",
     },
     {
-      text: "Nice quality, nice branding. If the content game stays strong, it can explode. Keep up the good work",
-      author: "SHAUN RODRIGUES",
+      text: "Nice quality, nice branding. If the content game stays strong, it can explode. Keep up the good work.",
+      author: "Shaun Rodrigues",
     },
   ];
 
@@ -191,17 +205,16 @@ function App() {
         <section id="hero" className="container mx-auto px-4 py-12 min-h-screen flex flex-col justify-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Left Side */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="bg-yellow-300/80 backdrop-blur-sm rounded-3xl p-10 border-2 border-black shadow-lg w-full relative overflow-hidden">
-                <div className="absolute -right-8 -top-8 w-32 h-32 bg-purple-600/20 rounded-full blur-xl"></div>
-                <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-orange-500/20 rounded-full blur-xl"></div>
-                <div className="text-5xl sm:text-7xl font-bold mb-4">IMPACTING</div>
-                <div className="bg-purple-600 text-white rounded-full px-6 py-3 inline-block text-3xl sm:text-4xl font-bold mb-4 transform hover:scale-105 transition-transform">
-                  SCROLLING
-                </div>
-                <div className="text-5xl sm:text-7xl font-bold">CULTURE</div>
-              </div>
-            </div>
+            <div className="bg-white backdrop-blur-sm rounded-3xl p-10 border-2 border-black shadow-lg w-full relative overflow-hidden text-center">
+  <div className="absolute -right-8 -top-8 w-32 h-32 bg-purle-600/20 rounded-full blur-xl"></div>
+  <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-oange-500/20 rounded-full blur-xl"></div>
+  <div className="text-5xl sm:text-7xl font-bold mb-4">IMPACTING</div>
+  <div className="bg-purple-600 text-white rounded-full px-6 py-3 inline-block text-5xl sm:text-7xl font-bold mb-4 transform hover:scale-105 transition-transform">
+    SCROLLING
+  </div>
+  <div className="text-5xl sm:text-7xl font-bold">CULTURE</div>
+</div>
+
             {/* Right Side */}
             <div className="flex flex-col items-center md:items-end space-y-8">
               <div className="bg-orange-500/90 backdrop-blur-sm text-white rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
@@ -209,7 +222,7 @@ function App() {
                   <div className="word-fade">{currentWord}</div>
                 </div>
               </div>
-              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
+              {/* <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
                 <div className="text-3xl sm:text-7xl font-bold flex items-center justify-center tracking-wider">
                   <span className="mr-1">C</span>
                   <span className="relative flex items-center justify-center">
@@ -220,7 +233,13 @@ function App() {
                   <span className="ml-1">MMI</span>
                   <span className="transform -skew-x-12 text-[#7C3AED]">X</span>
                 </div>
-              </div>
+              </div> */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
+  <div className="flex items-center justify-center">
+    <img src="black-yellow.png" alt="Commix Logo" className="max-w-full h-auto" />
+  </div>
+</div>
+
             </div>
           </div>
         </section>
@@ -249,9 +268,10 @@ function App() {
             </div>
             {/* Content */}
             <div className="pt-20">
-              <h2 className="text-3xl sm:text-5xl font-bold text-center mb-6">Building Creative Community</h2>
+              <h2 className="text-3xl sm:text-5xl font-bold text-center mb-6">BUILDING CREATIVE COMMUNITY</h2>
               <p className="text-lg sm:text-2xl text-center max-w-3xl mx-auto mb-8">
-                We Build Stories and Create Experience through Branding.
+              We Build Stories through Content 
+              Create experience through Branding
               </p>
               {/* Values */}
               <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -273,47 +293,44 @@ function App() {
                 </div>
                 <p className="text-base sm:text-lg text-center max-w-4xl mx-auto">
                   Design a brand experience that connects deeply with your audience's needs and aspirations.
-                  Deliver content that educates, inspires, and drives growth—establishing trust and positioning
+                  Deliver content that educates, inspires, and drives growth establishing trust and positioning
                   you as the expert who truly understands them.
                 </p>
               </div>
               {/* Stats */}
+
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  { number: '7+', label: 'Projects Delivered', icon: <Rocket /> },
-                  { number: '90+', label: 'Podcast', icon: <MessageCircle /> },
-                  { number: '15+', label: 'Creative Campaigns', icon: <Target /> },
-                ].map((stat, index) => (
-                  <div
-                    key={stat.label}
-                    className="stats-card group hover:bg-purple-600 hover:text-white transition-colors border-2 border-black"
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    <div className="text-purple-600 mb-4 group-hover:text-white">{stat.icon}</div>
-                    <div className="text-3xl sm:text-4xl font-bold text-purple-600 mb-2 group-hover:text-white">{stat.number}</div>
-                    <div className="text-base sm:text-xl text-center">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+  {[
+    { number: '7+', label: 'Projects Delivered', icon: <Rocket /> },
+    { number: '90+', label: 'Podcast', icon: <MessageCircle /> },
+    { number: '15+', label: 'Creative Campaigns', icon: <Target /> },
+  ].map((stat, index) => (
+    <div
+      key={stat.label}
+      className="stats-card group hover:bg-purple-600 hover:text-white transition-colors border-2 border-black p-4"
+      style={{ animationDelay: `${index * 0.2}s` }}
+    >
+      <div className="flex items-center justify-center text-purple-600 mb-4 group-hover:text-white">
+        {stat.icon}
+      </div>
+      <div className="text-3xl sm:text-4xl font-extrabold mb-2 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:text-white">
+        {stat.number}
+      </div>
+      <div className="text-base sm:text-xl text-center">{stat.label}</div>
+    </div>
+  ))}
+</div>
+
+
             </div>
           </div>
         </section>
 
-        {/* Clients Section */}
-        {/* <section id="clients" className="py-16 sm:py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">Our Clients</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-              <img src="/youace.jpeg" alt="Client 1" className="mx-auto max-h-16 object-contain" />
-              <img src="/T9.png" alt="Client 2" className="mx-auto max-h-16 object-contain" />
-              <img src="/client3.png" alt="Client 3" className="mx-auto max-h-16 object-contain" />
-              <img src="/client4.png" alt="Client 4" className="mx-auto max-h-16 object-contain" />
-            </div>
-          </div>
-        </section> */}
-
         {/* Services Section */}
         <section id="services" className="py-16 sm:py-24 bg-gradient-to-tr from-yellow-300/30 to-yellow-100/30 border-b-2 border-black">
+        <h2 className="text-2xl sm:text-4xl font-bold text-center mb-6">DEFINE . CREATE . INSPIRE . GROW WITH COMMIX</h2>
+        <br></br>
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
@@ -399,8 +416,8 @@ function App() {
           </div>
           <div className="container mx-auto px-4 relative">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">Why Choose Us?</h2>
-            <p className="text-base sm:text-xl text-center max-w-3xl mx-auto mb-8">
-              We don't just create brands—we create legacies. By understanding your audience's needs,
+            <p className="text-base sm:text-xl text-center max-w-4xl  mx-auto mb-8">
+              We don't just create brand we create legacies. By understanding your audience's needs,
               dreams, and aspirations, we craft strategies and content that connect on a deeper level.
             </p>
             <div className="flex justify-center">
@@ -412,25 +429,46 @@ function App() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-16 sm:py-24 bg-gradient-to-b from-yellow-300/40 to-yellow-100/40">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">WHAT THEY SAY ABOUT COMMIX</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {reviews.map((review, index) => (
-                <div
-                  key={index}
-                  className="testimonial-card bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border-2 border-black transform transition-all hover:scale-105 font-serif"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div className="text-4xl text-gray-300 mb-2">“</div>
-                  <p className="text-lg text-gray-800 mb-4 leading-relaxed">{review.text}</p>
-                  <p className="font-bold text-gray-900 text-right">- {review.author}</p>
+
+{/* Testimonial section */}
+        <section
+      id="testimonials"
+      className="py-16 sm:py-24 bg-white flex justify-center items-center"
+    >
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
+          WHAT THEY SAY ABOUT COMMIX
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="testimonial-card relative text-center transform transition-all hover:scale-105 hover:shadow-3xl p-6 flex flex-col min-h-[300px]"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Quotation Marks */}
+              <div className="text-6xl text-gray-300 absolute top-2 left-4 opacity-20">
+                “
+              </div>
+
+              {/* Content Wrapper */}
+              <div className="flex flex-col h-full">
+                {/* Testimonial Text */}
+                <p className="text-lg text-gray-800 mb-6 leading-relaxed flex-grow">
+                  {review.text}
+                </p>
+
+                {/* Author Name with Rounded Border */}
+                <div className="mt-auto inline-block border border-gray-800 rounded-full px-4 py-2 text-gray-900 font-semibold text-sm">
+                  {review.author}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+    </section>
+
 
         {/* Contact Form Section */}
         <section id="contact" className="py-16 sm:py-24 bg-gradient-to-b from-yellow-300/40 to-yellow-100/40 relative border-t-2 border-black">
@@ -522,11 +560,12 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 p-8 border-b-2 border-white/20">
               {/* Brand Section */}
               <div className="space-y-4 text-center md:text-left">
-                <div className="text-2xl sm:text-3xl font-bold flex items-center justify-center md:justify-start">
-                  <span>COMMIX</span>
-                  <div className="ml-2 bg-yellow-400 rounded-full w-8 h-8 flex items-center justify-center">
-                    <Play className="text-purple-600 ml-1" fill="currentColor" size={16} />
-                  </div>
+                <div className="flex items-center justify-center md:justify-start">
+                  <img
+                    src="/commix-logo.png" // Ensure this path is correct
+                    alt="Commix Logo"
+                    className="h-10"
+                  />
                 </div>
                 <p className="text-white/80 text-center md:text-left">
                   Creating impactful brand experiences that resonate and inspire.
