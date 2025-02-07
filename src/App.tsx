@@ -36,7 +36,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
-              src="/public/images/commix-logo2bg.png" // Ensure this path is correct (e.g., in the public folder)
+              src="/images/commix-logo2bg.png" // Ensure this path is correct (e.g., in the public folder)
               alt="Commix Logo"
               className="px-0 h-20"
             />
@@ -236,7 +236,7 @@ function App() {
               </div> */}
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg w-full sm:w-5/6 transform hover:scale-105 transition-transform border-2 border-black">
   <div className="flex items-center justify-center">
-    <img src="/public/images/black-yellow.png" alt="Commix Logo" className="max-w-full h-auto" />
+    <img src="/images/black-yellow.png" alt="Commix Logo" className="max-w-full h-auto" />
   </div>
 </div>
 
@@ -562,7 +562,7 @@ function App() {
               <div className="space-y-4 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start">
                   <img
-                    src="/public/images/commix-logo.png" // Ensure this path is correct
+                    src="/images/commix-logo.png" // Ensure this path is correct
                     alt="Commix Logo"
                     className="h-10"
                   />
