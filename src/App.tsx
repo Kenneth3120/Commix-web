@@ -36,9 +36,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
-              src="/images/commix-logo2bg.png" // Ensure this path is correct (e.g., in the public folder)
+              src="/images/commix-logo.png" // Ensure this path is correct (e.g., in the public folder)
               alt="Commix Logo"
-              className="px-0 h-20"
+              className="px-0 h-6"
             />
           </div>
           {/* Desktop Menu */}
